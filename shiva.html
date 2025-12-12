@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivakrishna Vadiyaram - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 5px rgba(102, 126, 234, 0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(118, 75, 162, 0.8)); }
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-links a {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 0.9em;
+        }
+
+        .contact-links a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+        }
+
+        .section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #667eea, #764ba2, transparent);
+            animation: loading 2s linear infinite;
+        }
+
+        @keyframes loading {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            color: #667eea;
+            border-left: 5px solid #764ba2;
+            padding-left: 20px;
+        }
+
+        .education-item, .experience-item, .project-item {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .education-item:hover, .experience-item:hover, .project-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .item-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .item-date {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .item-subtitle {
+            color: #555;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            color: white;
+            transition: transform 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: scale(1.05);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+            padding-bottom: 10px;
+        }
+
+        .skill-category p {
+            line-height: 1.8;
+            font-size: 0.95em;
+        }
+
+        .coursework {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .course-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            transition: transform 0.3s;
+        }
+
+        .course-tag:hover {
+            transform: scale(1.1);
+        }
+
+        .certifications {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .cert-item {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: transform 0.3s;
+        }
+
+        .cert-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(240, 147, 251, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            font-size: 1.1em;
+            margin-top: 40px;
+        }
+
+        .floating-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 80%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-50px) rotate(180deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .item-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>SHIVAKRISHNA VADIYARAM</h1>
+            <p class="subtitle">Java Full Stack Developer</p>
+            <p style="color: #888; margin: 10px 0;">📍 Hyderabad, Telangana</p>
+            <div class="contact-links">
+                <a href="tel:9391469564">📞 9391469564</a>
+                <a href="mailto:vadiyaramshivakrishna@gmail.com">✉️ Email</a>
+                <a href="https://linkedin.com/in/shivakrishna-vadiyaram" target="_blank">💼 LinkedIn</a>
+                <a href="https://github.com/shivakrishna-vadiyaram" target="_blank">🐙 GitHub</a>
+            </div>
+        </header>
+
+        <div class="section">
+            <h2>🎓 Education</h2>
+            <div class="education-item">
+                <div class="item-header">
+                    <div>
+                        <div class="item-title">Malla Reddy Engineering College and Management Sciences</div>
+                        <div class="item-subtitle">Bachelor of Technology in Computer Science | CGPA: 7.29/10.0</div>
+                        <div style="color: #666;">📍 Medchal, Telangana</div>
+                    </div>
+                    <div class="item-date">Nov 2021 – July 2025</div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <strong style="color: #667eea;">Relevant Coursework:</strong>
+                    <div class="coursework" style="margin-top: 15px;">
+                        <span class="course-tag">Data Structures</span>
+                        <span class="course-tag">Operating System</span>
+                        <span class="course-tag">Machine Learning</span>
+                        <span class="course-tag">Database Management</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💼 Experience</h2>
+            <div class="experience-item">
+                <div class="item-header">
+                    <div>
+                        <div class="item-title">Java Full Stack Trainee</div>
+                        <div class="item-subtitle">Codegnan Destination | Hyderabad, Telangana</div>
+                    </div>
+                    <div class="item-date">Sep 2025 – Nov 2025</div>
+                </div>
+                <ul>
+                    <li>Developed and maintained full-stack applications using core Java, Spring Boot, and other relevant frameworks to build robust and scalable back-end systems</li>
+                    <li>Contributed to front-end development by creating dynamic and responsive user interfaces with HTML, CSS, JavaScript, and React</li>
+                    <li>Gained practical experience in database management, including designing schemas, writing queries, and integrating with MySQL</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="item-header">
+                    <div>
+                        <div class="item-title">Python Developer Intern</div>
+                        <div class="item-subtitle">RD INFRO TECHNOLOGY</div>
+                    </div>
+                    <div class="item-date">Dec 2024 – Jan 2025</div>
+                </div>
+                <ul>
+                    <li>Developed basic Python applications, including a Bank Management System, improving operational functionality and demonstrating practical implementation of core Python concepts</li>
+                    <li>Gained hands-on experience with object-oriented programming, file handling, and error management</li>
+                    <li>Enhanced problem-solving and debugging skills by resolving performance issues during development</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Projects</h2>
+            <div class="project-item">
+                <div class="item-header">
+                    <div>
+                        <div class="item-title">Combat Model Against Poisoning Attacks on Federated Learning</div>
+                        <div class="item-subtitle">Deep Learning, Python</div>
+                    </div>
+                    <div class="item-date">Sep 2024 - Nov 2024</div>
+                </div>
+                <ul>
+                    <li>Developed a two-phase defense system using CNN and Federated Learning to protect against poisoning attacks</li>
+                    <li>Applied data preprocessing and compression techniques to minimize malicious update patterns and improve communication efficiency</li>
+                    <li>Replaced DNN (87% accuracy) with a CNN-based FL model achieving <strong>99% accuracy</strong> under attack</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <div class="item-header">
+                    <div>
+                        <div class="item-title">Wine Quality Prediction</div>
+                        <div class="item-subtitle">Python, Pandas, Scikit-learn, Matplotlib, Seaborn, Jupyter Notebook</div>
+                    </div>
+                    <div class="item-date">Feb 2025 - May 2025</div>
+                </div>
+                <ul>
+                    <li>Developed a machine learning model to predict wine quality using chemical properties</li>
+                    <li>Proposed and implemented an improved model using Multilayer Perceptron (MLP), increasing accuracy to <strong>88.52%</strong></li>
+                    <li>Conducted feature engineering, data preprocessing (scaling, normalization), and EDA to extract meaningful patterns from chemical composition data</li>
+                    <li>Visualized results using Matplotlib and Seaborn, and executed iterative experimentation in Jupyter Notebook</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🛠️ Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <p>Java • Python • C • HTML/CSS • JavaScript • SQL • Core Java • Spring Boot • Bootstrap</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Developer Tools</h3>
+                    <p>VS Code • Eclipse • Jupyter Notebook</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Technologies</h3>
+                    <p>GitHub • React • MySQL • Federated Learning</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🏆 Certifications & Awards</h2>
+            <div class="certifications">
+                <div class="cert-item">📜 Certificate of Internship Completion - Python</div>
+                <div class="cert-item">📜 Certified by Guvi in MySQL</div>
+                <div class="cert-item">📜 Certified by Guvi in Python</div>
+                <div class="cert-item">📜 Certified by Great Learning in C</div>
+                <div class="cert-item">📜 Certified by Reliance Skilling in Machine Learning</div>
+                <div class="cert-item">📜 Certified by NPTEL in Data Structures and Algorithms</div>
+            </div>
+        </div>
+
+        <footer>
+            <p>✨ Thank you for visiting my portfolio! ✨</p>
+            <p style="font-size: 0.9em; margin-top: 10px; opacity: 0.8;">Let's build something amazing together!</p>
+        </footer>
+    </div>
+</body>
+</html>
